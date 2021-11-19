@@ -29,18 +29,9 @@ class MainActivity : ComponentActivity() {
 fun MealzCategoriesScreen() {
 
     val viewModel : MealCategoriesViewModel = viewModel()
-    var rememberedMealz = remember{ mutableStateOf(emptyList<MealResponse>())}
-    val coroutineScope = rememberCoroutineScope()
-    LaunchedEffect(key1 = "GET_MEALS", block = {
-        coroutineScope.launch(Dispatchers.IO){
-            val meals = viewModel.getMeals()
-            rememberedMealz.value = meals
-        }
-    })
-
-
+    val meals = viewModel.mealsState.value
     LazyColumn{
-        items(rememberedMealz.value){
+        items(meals){
             Text(text = it.name)
         }
     }
