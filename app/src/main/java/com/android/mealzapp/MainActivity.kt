@@ -25,6 +25,8 @@ fun MealzCategoriesScreen() {
 
     // view model dengan compose
     val viewModel : MealCategoriesViewModel = viewModel() // todo 1 add viewmodel dan repository (next MealzCategorieViewModel)
+
+    val meals = viewModel.getMeals() //todo 3 add model (finish) next implementasi retrofit agar ui bisa bind data dari view model
     Text(text = "Hello compose")
 }
 
